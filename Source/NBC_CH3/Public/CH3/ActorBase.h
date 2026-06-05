@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -13,16 +12,15 @@ UCLASS()
 class NBC_CH3_API AActorBase : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AActorBase();
 
 protected:
-	UPROPERTY( EditAnywhere )
+	UPROPERTY(EditAnywhere)
 	TObjectPtr<USceneComponent> Root;
-	
-	UPROPERTY( EditAnywhere )
+
+	UPROPERTY(EditAnywhere)
 	TObjectPtr<UStaticMeshComponent> StaticMesh;
-	
 };

@@ -6,12 +6,11 @@
 #include "GameFramework/GameMode.h"
 #include "MyGameMode.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class NBC_CH3_API AMyGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
+public:
+	AMyGameMode();
 };

@@ -22,27 +22,30 @@ class NBC_CH3_API APawnCharacter : public APawn
 public:
 	// Sets default values for this pawn's properties
 	APawnCharacter();
-public:	
+
+public:
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(
+			class UInputComponent* PlayerInputComponent) override;
 
 protected:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UInputMappingContext> MappingContext;
-	
+
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UInputAction> IA_MOVE;
-	
+
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UInputAction> IA_LOOK;
-	
+
 	UFUNCTION()
 	void Move(const FInputActionValue& value);
 	UFUNCTION()
 	void Look(const FInputActionValue& value);
-	
+
 	UPROPERTY(EditAnywhere)
 	float MovementSpeed = 100.0f;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UCapsuleComponent> CapsuleComponent;

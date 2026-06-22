@@ -1,10 +1,10 @@
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "ActorBase.generated.h"
 
+class UBoxComponent;
 class USceneComponent;
 class UStaticMeshComponent;
 
@@ -19,8 +19,13 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere)
-	TObjectPtr<USceneComponent> Root;
+		TObjectPtr<UBoxComponent> Root;
 
 	UPROPERTY(EditAnywhere)
-	TObjectPtr<UStaticMeshComponent> StaticMesh;
+		TObjectPtr<UStaticMeshComponent> StaticMesh;
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void OnDestroyEffect();
+
+	void DestroyPlatform();
 };

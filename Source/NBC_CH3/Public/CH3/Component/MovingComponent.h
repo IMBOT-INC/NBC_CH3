@@ -4,39 +4,34 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "Moving.generated.h"
+#include "MovingComponent.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class NBC_CH3_API UMoving : public UActorComponent
+class NBC_CH3_API UMovingComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this component's properties
-	UMoving();
+	UMovingComponent();
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
-public:
-	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction*
 	                           ThisTickFunction) override;
 
-	void Move(float DeltaTime);
-
-public:
-	UPROPERTY(EditAnywhere, Category="Moving")
-	float MoveSpeed;
-	UPROPERTY(EditAnywhere, Category="Moving")
-	float MaxRange;
-	UPROPERTY(EditAnywhere, Category="Moving")
-	FVector MoveDirection = FVector(0.0f, 0.0f, 0.0f);
-
 private:
 	TObjectPtr<AActor> Owner = nullptr;
 	FVector StartLocation;
+
+
+	UPROPERTY(EditAnywhere, Category="Moving")
+		float MoveSpeed;
+	UPROPERTY(EditAnywhere, Category="Moving")
+		float MaxRange;
+	UPROPERTY(EditAnywhere, Category="Moving")
+		FVector MoveDirection = FVector(0.0f, 0.0f, 0.0f);
 };

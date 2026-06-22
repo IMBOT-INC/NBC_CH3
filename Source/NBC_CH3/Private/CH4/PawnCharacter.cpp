@@ -270,17 +270,18 @@ void APawnCharacter::UpdateRun(float DeltaTime)
 	}
 }
 
-void APawnCharacter::StaminaCalcWithApply(float DeltaTime, bool bShouldRecover)
+void APawnCharacter::StaminaCalcWithApply(float DeltaTime, bool type)
 {
-	if (Stamina < StaminaMax && bShouldRecover){
+	if (Stamina < StaminaMax && type){
 		Stamina += StaminaIncrease * DeltaTime;
 		UE_LOG(LogTemp, Warning, TEXT("Stamina: %f"), Stamina);
 	}
-	else if (Stamina > 0.f && !bShouldRecover){
+	else if (Stamina > 0.f && !type){
 		Stamina -= StaminaDecrease * DeltaTime;
 		UE_LOG(LogTemp, Warning, TEXT("Stamina: %f"), Stamina);
 	}
+
 	Stamina = FMath::Clamp(Stamina, 0.0f, StaminaMax);
+
 	OnStaminaChange.Broadcast(Stamina);
-	UE_LOG(LogTemp, Warning, TEXT("Stamina BroadCast: %f"), Stamina);
 }

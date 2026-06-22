@@ -28,7 +28,7 @@ void UMovingComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	FHitResult Hit;
 	FVector NewLocation = Owner->GetActorLocation() + NormalizedDirection *
 			MoveSpeed * DeltaTime;
-	FVector TestDeltaLocation = NormalizedDirection * MoveSpeed * DeltaTime;
+	FVector TestDeltaLocation = NormalizedDirection * 4000 * DeltaTime;
 
 
 	Owner->SetActorLocation(NewLocation, true, &Hit);

@@ -14,7 +14,7 @@ class UCapsuleComponent;
 class USkeletalMeshComponent;
 class USpringArmComponent;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStaminaChange, float, NewStamina);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnChangeStamina, float, NewStamina);
 
 UCLASS()
 class NBC_CH3_API APawnCharacter : public APawn
@@ -22,8 +22,7 @@ class NBC_CH3_API APawnCharacter : public APawn
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(BlueprintAssignable)
-		FOnStaminaChange OnStaminaChange;
+	FOnChangeStamina OnStaminaChange;
 
 	// Sets default values for this pawn's properties
 	APawnCharacter();
@@ -31,8 +30,8 @@ public:
 	virtual void SetupPlayerInputComponent(
 			class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION(BlueprintPure, Category = "Stamina")
-		float GetStamina() const { return Stamina; }
+	UPROPERTY(EditAnywhere)
+		float Stamina = 100.0f;
 
 protected:
 	UPROPERTY(EditAnywhere)
@@ -76,8 +75,6 @@ protected:
 	UPROPERTY(EditAnywhere)
 		float StaminaIncrease = 20.f;
 
-	UPROPERTY(EditAnywhere)
-		float Stamina = 100.0f;
 
 	UPROPERTY(EditAnywhere)
 		float StaminaMax = 100.0f;
@@ -101,7 +98,7 @@ private:
 	void SetFalling();
 	void UpdateGroundCheck();
 	void UpdateRun(float DeltaTime);
-	void StaminaCalcWithApply(float DeltaTime, bool bShouldRecover);
+	void StaminaCalcWithApply(float DeltaTime, bool type);
 
 	UPROPERTY(VisibleAnywhere)
 		bool IsRun = false;

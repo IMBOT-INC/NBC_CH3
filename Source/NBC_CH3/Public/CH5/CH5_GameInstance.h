@@ -14,9 +14,16 @@ class NBC_CH3_API UCH5_GameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere)
-		int32 CurretLevel = 1;
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
+		int32 CurrentLevelIndex = 0;
 
-	UPROPERTY(EditAnywhere)
-		TArray<FName> LevelMaps;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
+		TArray<TSoftObjectPtr<UWorld>> LevelMaps;
+
+	UFUNCTION(BlueprintCallable, Category = "Level")
+		void OpenLevelByIndex(UObject* WorldContextObject, int32 Index);
+
+	UFUNCTION(BlueprintCallable, Category = "Level")
+		void OpenNextLevel(UObject* WorldContextObject);
 };

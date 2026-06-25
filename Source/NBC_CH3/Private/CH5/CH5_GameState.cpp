@@ -1,5 +1,7 @@
 #include "CH5/CH5_GameState.h"
 
+#include "CH5/CH5_GameInstance.h"
+
 
 float ACH5_GameState::GetRemainingLevelTime() const
 {
@@ -57,10 +59,10 @@ void ACH5_GameState::OnLevelTimeUp()
 
 void ACH5_GameState::NextLevel()
 {
-	// 레벨 
-	// if (Level > LevelMapNames.Num()){
-	// 	return;
-	// }
-	// Level++;
-	// OnLevelChange.Broadcast(Level);
+	UCH5_GameInstance* GameInstance = GetGameInstance<UCH5_GameInstance>();
+	if (!GameInstance){
+		return;
+	}
+
+	GameInstance->OpenNextLevel(this);
 }

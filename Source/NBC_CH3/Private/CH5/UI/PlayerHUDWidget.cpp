@@ -4,6 +4,7 @@
 #include "CH5/UI/PlayerHUDWidget.h"
 
 #include "CH4/PawnCharacter.h"
+#include "CH5/CH5_GameInstance.h"
 #include "CH5/CH5_GameState.h"
 #include "Components/TextBlock.h"
 
@@ -32,15 +33,15 @@ void UPlayerHUDWidget::NativeConstruct()
 		UpdateStamina(PawnCharacter->Stamina);
 	}
 	if (GameState){
-		GameState->OnLevelChange.AddDynamic(this, &UPlayerHUDWidget::UpdateLevel);
 		GameState->OnWaveChange.AddDynamic(this, &UPlayerHUDWidget::UpdateWave);
-		PlayerPawn->OnStaminaChange.AddDynamic(this, &UPlayerHUDWidget::UpdateStamina);
 
-
-		UpdateStamina(PlayerPawn->Stamina);
-		UpdateLevel(GameState->Level);
 		UpdateWave(GameState->Wave);
 	}
+
+	if (UCH5_GameInstance* GameInstance = GetGameInstance<UCH5_GameInstance>()){
+		UpdateLevel(GameInstance->CurrentLevelIndex);
+	}
+
 	GetWorld()->GetTimerManager().SetTimer(
 			HUDTimeUpdateTimerHandle,
 			this,
@@ -72,10 +73,10 @@ void UPlayerHUDWidget::UpdateStamina(float NewStamina)
 	}
 }
 
-void UPlayerHUDWidget::UpdateLevel(int32 NewLevel)
+void UPlayerHUDWidget::UpdateLevel(int32 NewLevelIndex)
 {
 	if (Level){
-		Level->SetText(FText::FromString(FString::Printf(TEXT("Level: %d"), NewLevel)));
+		Level->SetText(FText::FromString(FString::Printf(TEXT("Level: %d"), NewLevelIndex + 1)));
 	}
 }
 

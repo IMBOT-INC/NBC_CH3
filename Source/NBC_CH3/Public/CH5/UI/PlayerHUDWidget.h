@@ -38,7 +38,7 @@ private:
 	UFUNCTION()
 		void UpdateStamina(float NewStamina);
 	UFUNCTION()
-		void UpdateLevel(int32 NewLevel);
+		void UpdateLevel(int32 NewLevelIndex);
 	UFUNCTION()
 		void UpdateWave(int32 NewWave);
 	UFUNCTION()

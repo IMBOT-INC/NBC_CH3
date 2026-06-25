@@ -3,3 +3,33 @@
 
 #include "CH5/CH5_GameInstance.h"
 
+#include "Kismet/GameplayStatics.h"
+
+
+void UCH5_GameInstance::OpenLevelByIndex(UObject* WorldContextObject, int32 Index)
+{
+	if (!WorldContextObject){
+		return;
+	}
+
+	if (!LevelMaps.IsValidIndex(Index)){
+		UE_LOG(LogTemp, Warning, TEXT("LevelMaps[%d] is invalid."), Index);
+		return;
+	}
+
+	const TSoftObjectPtr<UWorld> OpenMap = LevelMaps[Index];
+	if (OpenMap.IsNull()){
+		UE_LOG(LogTemp, Warning, TEXT("LevelMaps[%d] is null."), Index);
+		return;
+	}
+
+	CurrentLevelIndex = Index;
+
+	const FName LevelName = FName(*OpenMap.ToSoftObjectPath().GetLongPackageName());
+	UGameplayStatics::OpenLevel(WorldContextObject, LevelName);
+}
+
+void UCH5_GameInstance::OpenNextLevel(UObject* WorldContextObject)
+{
+	OpenLevelByIndex(WorldContextObject, CurrentLevelIndex + 1);
+}

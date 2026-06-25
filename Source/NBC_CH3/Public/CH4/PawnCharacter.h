@@ -14,7 +14,7 @@ class UCapsuleComponent;
 class USkeletalMeshComponent;
 class USpringArmComponent;
 
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnChangeStamina, float, NewStamina);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnChangeStamina, float, NewStamina);
 
 UCLASS()
 class NBC_CH3_API APawnCharacter : public APawn

@@ -6,6 +6,8 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "DrawDebugHelpers.h"
+#include "CH5/CH5_GameState.h"
+#include "CH5/UI/PlayerHUDWidget.h"
 #include "GameFramework/SpringArmComponent.h"
 
 // Sets default values

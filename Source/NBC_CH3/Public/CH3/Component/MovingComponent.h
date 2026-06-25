@@ -22,11 +22,14 @@ protected:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction*
 	                           ThisTickFunction) override;
+	UFUNCTION()
+		void OnWaveChanged(int32 value);
 
 private:
+	float BaseMoveSpeed = 0.0f;
+	float GetWaveSpeedMultiplier(int value);
 	TObjectPtr<AActor> Owner = nullptr;
 	FVector StartLocation;
-
 
 	UPROPERTY(EditAnywhere, Category="Moving")
 		float MoveSpeed;

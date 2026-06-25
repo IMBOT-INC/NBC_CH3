@@ -26,30 +26,26 @@ public:
 	FOnLevelChange OnLevelChange;
 	FOnWaveChange OnWaveChange;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Wave")
-		int32 LimitWave = 3;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Wave")
-		int32 LimitCheckPoint = 3;
+	int32 LimitWave = 3;
+	int32 LimitCheckPoint = 3;
+	int32 Wave = 1;
+	int32 Level = 1;
 
 	float GetRemainingLevelTime() const;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-		int32 Wave = 1;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		int32 Level = 1;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
 		TArray<FName> LevelMapNames;
 	FTimerHandle WaveTimerHandle;
 
+
+	void CheckPoint();
+
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintCallable)
-		void NextWave();
-
 protected:
-	void CheckPoint();
 	void Timer();
 	void OnLevelTimeUp();
 	void NextLevel();
+	void NextWave();
 };

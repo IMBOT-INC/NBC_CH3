@@ -18,6 +18,7 @@ ACheckPoint::ACheckPoint()
 	Collision = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
 	Collision->SetupAttachment(Root);
 	Collision->OnComponentBeginOverlap.AddDynamic(this, &ACheckPoint::OnOverlap);
+	Collision->SetHiddenInGame(false, true);
 }
 
 // Called when the game starts or when spawned
@@ -44,6 +45,6 @@ void ACheckPoint::OnOverlap(
 		return;
 	}
 
-	GameState->NextWave();
+	GameState->CheckPoint();
 	Destroy();
 }

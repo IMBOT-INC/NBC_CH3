@@ -31,12 +31,7 @@ public:
 	int32 Wave = 1;
 
 	float GetRemainingLevelTime() const;
-
-
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
-	// 	TArray<FName> LevelMapNames;
 	FTimerHandle WaveTimerHandle;
-
 
 	void CheckPoint();
 

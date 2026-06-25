@@ -21,6 +21,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
 		TArray<TSoftObjectPtr<UWorld>> LevelMaps;
 
+
 	UFUNCTION(BlueprintCallable, Category = "Level")
 		void OpenLevelByIndex(UObject* WorldContextObject, int32 Index);
 

@@ -3,9 +3,9 @@
 
 #include "CH5/UI/PlayerHUDWidget.h"
 
-#include "CH4/PawnCharacter.h"
 #include "CH5/CH5_GameInstance.h"
 #include "CH5/CH5_GameState.h"
+#include "CH5/CH5_PawnCharacter.h"
 #include "Components/TextBlock.h"
 
 void UPlayerHUDWidget::NativeConstruct()
@@ -13,7 +13,7 @@ void UPlayerHUDWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	APawn* OwningPawn = GetOwningPlayerPawn();
-	APawnCharacter* PawnCharacter = Cast<APawnCharacter>(OwningPawn);
+	ACH5_PawnCharacter* PawnCharacter = Cast<ACH5_PawnCharacter>(OwningPawn);
 
 
 	UWorld* World = GetWorld();

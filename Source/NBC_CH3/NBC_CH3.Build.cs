@@ -11,7 +11,9 @@ public class NBC_CH3 : ModuleRules
 		PublicDependencyModuleNames.AddRange(new[]
 		{
 			"Core", "CoreUObject", "Engine",
-			"InputCore", "EnhancedInput", "UMG"
+			"InputCore", "EnhancedInput", "UMG",
+			"FieldNotification",
+			"ModelViewViewModel"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });

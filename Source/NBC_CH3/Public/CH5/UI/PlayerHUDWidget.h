@@ -18,7 +18,7 @@ class NBC_CH3_API UPlayerHUDWidget : public UUserWidget
 protected:
 	virtual void NativeConstruct() override;
 
-	
+
 	UPROPERTY(meta = (BindWidget))
 		TObjectPtr<UTextBlock> Stamina;
 

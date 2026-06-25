@@ -58,10 +58,9 @@ void ACH5_GameState::OnLevelTimeUp()
 void ACH5_GameState::NextLevel()
 {
 	// 레벨 
-	if (Level > LevelMapNames.Num()){
-		return;
-	}
-
-	Level++;
-	OnLevelChange.Broadcast(Level);
+	// if (Level > LevelMapNames.Num()){
+	// 	return;
+	// }
+	// Level++;
+	// OnLevelChange.Broadcast(Level);
 }

@@ -12,7 +12,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWaveChange, int32, NewWaveValue);
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLevelChange, int32, NewLevelValue);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLevelChange, int32, NewLevelValue);
 
 // DECLARE_MULTICAST_DELEGATE_OneParam(FOnTimeChange, float, NewTimeValue);
 
@@ -23,19 +23,18 @@ class NBC_CH3_API ACH5_GameState : public AGameState
 	GENERATED_BODY()
 
 public:
-	FOnLevelChange OnLevelChange;
+	// FOnLevelChange OnLevelChange;
 	FOnWaveChange OnWaveChange;
 
 	int32 LimitWave = 3;
 	int32 LimitCheckPoint = 3;
 	int32 Wave = 1;
-	int32 Level = 1;
 
 	float GetRemainingLevelTime() const;
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
-		TArray<FName> LevelMapNames;
+	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
+	// 	TArray<FName> LevelMapNames;
 	FTimerHandle WaveTimerHandle;
 
 

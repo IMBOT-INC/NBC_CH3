@@ -33,6 +33,8 @@ public:
 	UPROPERTY(EditAnywhere)
 		float Stamina = 100.0f;
 
+	float GetStaminaMax() const { return StaminaMax; }
+
 protected:
 	UPROPERTY(EditAnywhere)
 		TObjectPtr<UInputMappingContext> MappingContext;

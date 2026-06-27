@@ -6,7 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "PlayerHUDWidget.generated.h"
 
-class UTextBlock;
+class UCH5_PlayerHUDViewModel;
 /**
  * 
  */
@@ -17,21 +17,12 @@ class NBC_CH3_API UPlayerHUDWidget : public UUserWidget
 
 protected:
 	virtual void NativeConstruct() override;
-
-
-	UPROPERTY(meta = (BindWidget))
-		TObjectPtr<UTextBlock> Stamina;
-
-	UPROPERTY(meta = (BindWidget))
-		TObjectPtr<UTextBlock> Level;
-
-	UPROPERTY(meta = (BindWidget))
-		TObjectPtr<UTextBlock> Wave;
-
-	UPROPERTY(meta = (BindWidget))
-		TObjectPtr<UTextBlock> Time;
+	virtual void NativeDestruct() override;
 
 private:
+	UPROPERTY(BlueprintReadOnly, Category = "MVVM", meta = (AllowPrivateAccess = "true"))
+		TObjectPtr<UCH5_PlayerHUDViewModel> ViewModel;
+
 	FTimerHandle HUDTimeUpdateTimerHandle;
 	void UpdateTimeFromGameState();
 

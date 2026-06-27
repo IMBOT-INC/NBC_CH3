@@ -13,5 +13,20 @@ UCLASS()
 class NBC_CH3_API ACH5_MyGameMode : public AMyGameMode
 {
 	GENERATED_BODY()
-	
+
+public:
+	ACH5_MyGameMode();
+
+	UFUNCTION(BlueprintCallable)
+		void ShowGameOverWidget();
+
+protected:
+	virtual void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="UI")
+		TSubclassOf<UUserWidget> GameOverWidgetClass;
+
+private:
+	UPROPERTY()
+		TObjectPtr<UUserWidget> GameOverWidget;
 };

@@ -3,9 +3,12 @@
 
 #include "CH5/DeadLine.h"
 
+#include "CH5/CH5_MyGameMode.h"
 #include "Components/BoxComponent.h"
 #include "Components/SphereComponent.h"
+#include "Kismet/GameplayStatics.h"
 
+class ACH5_MyGameMode;
 // Sets default values
 ADeadLine::ADeadLine()
 {
@@ -36,6 +39,7 @@ void ADeadLine::Overlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 		UE_LOG(LogTemp, Warning, TEXT(" Overlap:Destroy"))
 		OtherActor->Destroy();
 	}
+
 	UE_LOG(LogTemp, Warning, TEXT(" Overlap:No "))
 }
 

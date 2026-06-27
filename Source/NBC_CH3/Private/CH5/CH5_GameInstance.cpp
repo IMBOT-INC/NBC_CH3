@@ -6,6 +6,27 @@
 #include "Kismet/GameplayStatics.h"
 
 
+void UCH5_GameInstance::StartGame(UObject* WorldContextObject)
+{
+	OpenLevelByIndex(WorldContextObject, 0);
+}
+
+void UCH5_GameInstance::RestartCurrentLevel(UObject* WorldContextObject)
+{
+	OpenLevelByIndex(WorldContextObject, CurrentLevelIndex);
+}
+
+void UCH5_GameInstance::OpenMainMenu(UObject* WorldContextObject)
+{
+	UGameplayStatics::OpenLevel(WorldContextObject, MainMenuLevelName);
+}
+
+void UCH5_GameInstance::QuitGame(UObject* WorldContextObject)
+{
+	APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0);
+	UKismetSystemLibrary::QuitGame(WorldContextObject, PC, EQuitPreference::Quit, false);
+}
+
 void UCH5_GameInstance::OpenLevelByIndex(UObject* WorldContextObject, int32 Index)
 {
 	if (!WorldContextObject){

@@ -22,9 +22,25 @@ public:
 		TArray<TSoftObjectPtr<UWorld>> LevelMaps;
 
 
+	UFUNCTION(BlueprintCallable)
+		void StartGame(UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable)
+		void RestartCurrentLevel(UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable)
+		void OpenMainMenu(UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable)
+		void QuitGame(UObject* WorldContextObject);
+
+
 	UFUNCTION(BlueprintCallable, Category = "Level")
 		void OpenLevelByIndex(UObject* WorldContextObject, int32 Index);
 
 	UFUNCTION(BlueprintCallable, Category = "Level")
 		void OpenNextLevel(UObject* WorldContextObject);
+
+private:
+	FName MainMenuLevelName = TEXT("CH5");
 };

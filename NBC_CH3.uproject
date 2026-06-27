@@ -31,5 +31,8 @@
 			"Name": "ModelViewViewModelPreview",
 			"Enabled": true
 		}
+	],
+	"AdditionalPluginDirectories": [
+		"../../Epic Games/UE_5.7/Plugins"
 	]
 }

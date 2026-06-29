@@ -37,6 +37,13 @@ void ADeadLine::Overlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 		UE_LOG(LogTemp, Warning, TEXT(" Overlap:OnDestroy"))
 		OnDestroy(Point);
 		UE_LOG(LogTemp, Warning, TEXT(" Overlap:Destroy"))
+		if (ACH5_MyGameMode* GameMode = Cast<ACH5_MyGameMode>(
+				UGameplayStatics::GetGameMode(this))){
+			GameMode->ShowGameOverWidget();
+		}
+		else{
+			UE_LOG(LogTemp, Error, TEXT("GameMode cast failed"));
+		}
 		OtherActor->Destroy();
 	}
 

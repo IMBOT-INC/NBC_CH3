@@ -20,30 +20,39 @@ void ACH5_MyGameMode::BeginPlay()
 ACH5_MyGameMode::ACH5_MyGameMode()
 {
 }
-
 void ACH5_MyGameMode::ShowGameOverWidget()
 {
-	if (GameOverWidgetClass == nullptr){
+	if (!GameOverWidgetClass){
+		UE_LOG(LogTemp, Error, TEXT("GameOverWidgetClass is null"));
 		return;
 	}
 
 	APlayerController* PC = GetWorld()->GetFirstPlayerController();
-	if (PC == nullptr){
+	if (!PC){
+		UE_LOG(LogTemp, Error, TEXT("PlayerController is null"));
 		return;
 	}
 
-	if (GameOverWidget == nullptr){
+	if (!GameOverWidget){
 		GameOverWidget = CreateWidget<UUserWidget>(PC, GameOverWidgetClass);
+		UE_LOG(LogTemp, Warning, TEXT("Create GameOverWidget: %s"), *GetNameSafe(GameOverWidget));
 	}
 
-	if (GameOverWidget && !GameOverWidget->IsInViewport()){
-		GameOverWidget->AddToViewport();
+	if (!GameOverWidget){
+		UE_LOG(LogTemp, Error, TEXT("GameOverWidget create failed"));
+		return;
+	}
+
+	GameOverWidget->SetVisibility(ESlateVisibility::Visible);
+
+	if (!GameOverWidget->IsInViewport()){
+		GameOverWidget->AddToViewport(100);
+		UE_LOG(LogTemp, Warning, TEXT("GameOverWidget AddToViewport"));
 	}
 
 	PC->bShowMouseCursor = true;
 
 	FInputModeUIOnly InputMode;
-	InputMode.SetWidgetToFocus(GameOverWidget->TakeWidget());
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	PC->SetInputMode(InputMode);
 

@@ -52,5 +52,8 @@ void UCH5_GameInstance::OpenLevelByIndex(UObject* WorldContextObject, int32 Inde
 
 void UCH5_GameInstance::OpenNextLevel(UObject* WorldContextObject)
 {
+	if (CurrentLevelIndex == 3){
+		return QuitGame(WorldContextObject);
+	}
 	OpenLevelByIndex(WorldContextObject, CurrentLevelIndex + 1);
 }

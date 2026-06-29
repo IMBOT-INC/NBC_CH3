@@ -52,7 +52,8 @@ void UCH5_GameInstance::OpenLevelByIndex(UObject* WorldContextObject, int32 Inde
 
 void UCH5_GameInstance::OpenNextLevel(UObject* WorldContextObject)
 {
-	if (CurrentLevelIndex == 3){
+	if (CurrentLevelIndex == 2){
+		UE_LOG(LogTemp, Warning, TEXT("Game is over."));
 		return QuitGame(WorldContextObject);
 	}
 	OpenLevelByIndex(WorldContextObject, CurrentLevelIndex + 1);
